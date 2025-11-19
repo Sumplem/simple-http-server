@@ -1,4 +1,4 @@
-package com.http_server.core;
+package com.sumplem.httpserver.core;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,10 +8,10 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.time.LocalDateTime;
 
-public class HttpWorker extends Thread {
+public class HttpConectionWorker extends Thread {
     private Socket socket;
 
-    public HttpWorker(Socket socket) {
+    public HttpConectionWorker(Socket socket) {
         this.socket = socket;
     }
 
@@ -20,6 +20,11 @@ public class HttpWorker extends Thread {
         try (
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+
+            System.out.println("Connected!");
+            while (in.ready()) {
+                System.out.println(in.readLine());
+            }
 
             String html = """
                     <html>

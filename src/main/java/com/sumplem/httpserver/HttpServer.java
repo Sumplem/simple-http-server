@@ -1,6 +1,6 @@
-package com.http_server;
+package com.sumplem.httpserver;
 
-import com.http_server.core.ServerListener;
+import com.sumplem.httpserver.core.ServerListener;
 
 public class HttpServer {
     public static void main(String[] args) {

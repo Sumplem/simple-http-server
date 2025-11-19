@@ -1,4 +1,4 @@
-package com.http_server.core;
+package com.sumplem.httpserver.core;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -17,7 +17,8 @@ public class ServerListener extends Thread {
             serverSocket = new ServerSocket(port);
 
             while (serverSocket.isBound() && !serverSocket.isClosed()) {
-                HttpWorker worker = new HttpWorker(serverSocket.accept());
+                System.out.println("Waiting connection...");
+                HttpConectionWorker worker = new HttpConectionWorker(serverSocket.accept());
                 worker.start();
             }
 
